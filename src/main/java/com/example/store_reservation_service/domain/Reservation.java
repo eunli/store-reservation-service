@@ -1,5 +1,6 @@
 package com.example.store_reservation_service.domain;
 
+import com.example.store_reservation_service.domain.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  * - user: 예약한 고객
  * - store: 예약된 매장
  * - reservationTime: 예약 시간
- * - status: 예약 상태 (PENDING, CONFIRMED, CANCELLED 등)
+ * - status: 예약 상태 (PENDING, CONFIRMED, CANCELLED)
  * - createdAt: 예약 생성 날짜
  * - updatedAt: 예약 정보 마지막 업데이트 날짜
  */
@@ -39,12 +40,12 @@ public class Reservation {
     private LocalDateTime reservationTime;
 
     @Column(nullable = false)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.PENDING;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @PreUpdate

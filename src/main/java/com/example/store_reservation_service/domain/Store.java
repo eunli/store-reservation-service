@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * - name: 매장의 이름
  * - location: 매장의 위치
  * - description: 매장에 대한 설명
- * - partner: 매장을 등록한 점장
+ * - partner: 매장을 등록한 점장 (role=PARTNER)
  * - createdAt: 매장 등록 날짜
  * - updatedAt: 매장 정보 마지막 업데이트 날짜
  */
@@ -29,7 +29,7 @@ public class Store {
 
     @ManyToOne
     @JoinColumn(name = "partner_id", nullable = false)
-    private Partner partner;
+    private User partner;
 
     @Column(nullable = false)
     private String name;
@@ -40,10 +40,9 @@ public class Store {
     @Column(length = 1000)
     private String description;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @PreUpdate

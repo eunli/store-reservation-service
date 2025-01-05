@@ -36,15 +36,14 @@ public class Review {
     private Store store;
 
     @Column(nullable = false)
-    private Integer rating;
+    private int rating;
 
     @Column(length = 1000)
     private String comment;
 
-    @Column(nullable = false, updatable = false)
+    @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(nullable = false)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @PreUpdate
