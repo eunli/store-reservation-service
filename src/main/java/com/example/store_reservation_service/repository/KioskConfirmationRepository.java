@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface KioskConfirmationRepository extends JpaRepository<KioskConfirmation, Long> {
+    // 예약 ID로 조회
     Optional<KioskConfirmation> findByReservationId(Long reservationId);
 }

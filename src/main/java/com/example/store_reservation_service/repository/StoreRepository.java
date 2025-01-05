@@ -8,6 +8,9 @@ import java.util.List;
 
 @Repository
 public interface StoreRepository extends JpaRepository<Store, Long> {
+    // 점장(Partner)별 매장 목록 조회
     List<Store> findByPartnerId(Long partnerId);
+
+    // 매장 이름 검색
     List<Store> findByNameContaining(String name);
 }

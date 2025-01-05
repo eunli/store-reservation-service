@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
+    // 매장별 리뷰 조회
     List<Review> findByStoreId(Long storeId);
+    // 사용자별 리뷰 조회
     List<Review> findByUserId(Long userId);
 }
